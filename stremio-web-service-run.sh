@@ -6,6 +6,13 @@ HTPASSWD_FILE="/etc/nginx/.htpasswd"
 
 sed -i 's/df -k/df -Pk/g' server.js
 
+if [ -n "${ADDON_URLS}" ]; then
+    echo "Importing addon from ${ADDON_URLS}..."
+    ./import_addon.sh "${ADDON_URLS}"
+else
+    echo "No ADDON_URLS provided."
+fi
+
 if [ -n "${SERVER_URL}" ]; then
     if [ "${SERVER_URL: -1}" != "/" ]; then
         SERVER_URL="$SERVER_URL/"

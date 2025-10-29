@@ -1,11 +1,12 @@
 services:
   stremio:
-    image: tsaridas/stremio-docker:latest
+    image: stremio-docker:local
     restart: unless-stopped
     environment:
       NO_CORS: 1
       AUTO_SERVER_URL: 1
-      #IPADDRESS: 192.168.1.10 # Setup your ip address here
+      #IPADDRESS: 192.168.1.10 # Setup your ip address 
+      ADDON_URLS: https://torrentio.strem.fun/qualityfilter=4k/manifest.json https://1fe84bc728af-imdb-catalogs.baby-beamup.club/manifest.json https://2c2fdd5f9c5b-stremio-internet-archive-addon-v2.baby-beamup.club/manifest.json
     ports:
       - "8080:8080"
     volumes:
